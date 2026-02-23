@@ -1,0 +1,11 @@
+{
+  "name": "nazmi-rahim-architect",
+  "compatibility_date": "2024-09-23",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./public"
+  },
+  "build": {
+    "command": "rm -rf public && mkdir -p public && cp *.html styles.css script.js public/ && mkdir -p public/assets && cp -R assets/. public/assets/"
+  }
+}
