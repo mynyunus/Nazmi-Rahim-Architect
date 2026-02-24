@@ -545,7 +545,8 @@
         }
       });
 
-      const setActive = (index) => {
+      const setActive = (index, options = {}) => {
+        const { suppressThumbScroll = false } = options;
         activeIndex = (index + total) % total;
         track.style.transform = `translateX(-${activeIndex * 100}%)`;
 
@@ -562,7 +563,11 @@
 
           if (isActive) {
             thumb.setAttribute('aria-current', 'true');
-            thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            const carouselRect = certCarousel.getBoundingClientRect();
+            const carouselInView = carouselRect.bottom > 0 && carouselRect.top < window.innerHeight;
+            if (!suppressThumbScroll && carouselInView) {
+              thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
           } else {
             thumb.removeAttribute('aria-current');
           }
@@ -653,7 +658,7 @@
 
       window.addEventListener('resize', syncStageHeight, { passive: true });
 
-      setActive(activeIndex);
+      setActive(activeIndex, { suppressThumbScroll: true });
     }
   }
 
