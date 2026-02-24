@@ -1,14 +1,14 @@
 {
-  "name": "nazmi-rahim-architect",
+  "name": "nra",
   "compatibility_date": "2024-09-23",
   "workers_dev": false,
   "routes": [
     {
-      "pattern": "nrarch.com/*",
+      "pattern": "nrarch.com",
       "custom_domain": true
     },
     {
-      "pattern": "www.nrarch.com/*",
+      "pattern": "www.nrarch.com",
       "custom_domain": true
     }
   ],
